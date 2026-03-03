@@ -23,7 +23,7 @@ ARG BIRDNET_PIPY_VERSION=ha
 
 RUN apk add --no-cache curl tar
 RUN mkdir -p /src \
-    && curl -fsSL "https://codeload.github.com/${BIRDNET_PIPY_REPOSITORY}/tar.gz/refs/heads/${BIRDNET_PIPY_VERSION}" \
+    && curl -fsSL "https://codeload.github.com/${BIRDNET_PIPY_REPOSITORY}/tar.gz/refs/heads/${BIRDNET_PIPY_VERSION}?build=${BUILD_VERSION}" \
         | tar -xz -C /src --strip-components=1
 
 WORKDIR /src/frontend
