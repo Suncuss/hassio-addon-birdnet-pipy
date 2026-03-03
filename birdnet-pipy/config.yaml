@@ -60,6 +60,7 @@ environment:
   PGID: "0"
   PUID: "0"
 hassio_api: true
+hassio_role: manager
 ingress: true
 ingress_stream: true
 init: false
@@ -95,5 +96,5 @@ schema:
   ssl: bool?
 slug: birdnet-pipy
 url: https://github.com/Suncuss/hassio-addon-birdnet-pipy/tree/main/birdnet-pipy
-version: "0.5.6-dev2"
+version: "0.5.6-dev3"
 webui: "[PROTO:ssl]://[HOST]:[PORT:80]"
