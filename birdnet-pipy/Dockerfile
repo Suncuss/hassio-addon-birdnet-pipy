@@ -19,7 +19,7 @@ ARG BUILD_VERSION
 FROM node:20-alpine AS frontend-builder
 
 ARG BIRDNET_PIPY_REPOSITORY=Suncuss/BirdNET-PiPy
-ARG BIRDNET_PIPY_VERSION=staging
+ARG BIRDNET_PIPY_VERSION=ha
 
 RUN apk add --no-cache curl tar
 RUN mkdir -p /src \
@@ -33,7 +33,7 @@ RUN npm run build
 FROM ${BUILD_FROM}
 
 ARG BIRDNET_PIPY_REPOSITORY=Suncuss/BirdNET-PiPy
-ARG BIRDNET_PIPY_VERSION=staging
+ARG BIRDNET_PIPY_VERSION=ha
 
 ##################
 # 2 Modify Image #
