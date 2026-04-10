@@ -12,6 +12,8 @@ export PULSE_SERVER="${PULSE_SERVER:-unix:/run/pulse/native}"
 # bypasses directory ACL checks and is unaffected by the ownership change.
 mkdir -p /app/data/logs
 touch /app/data/logs/icecast.log
-chown icecast2:icecast2 /app/data/logs /app/data/logs/icecast.log
+# Use `icecast2:` (trailing colon) so chown picks the user's primary group,
+# which is `icecast` on Debian, not `icecast2`.
+chown icecast2: /app/data/logs /app/data/logs/icecast.log
 
 gosu icecast2 /usr/local/bin/start-icecast.sh
