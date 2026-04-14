@@ -1,4 +1,9 @@
 
+## 0.6.2-dev0 (2026-04-13)
+- Simplify ingress nginx to a single `<base href>` rewrite. The frontend now declares `<base href="/">` in `index.html` and uses relative paths for all internal URLs (built assets via Vite `base: './'`, axios via `BASE + 'api'`, socket.io via `path: BASE + 'socket.io'`). Previous seven `sub_filter` rules (href/src/`/api`/`/socket.io`) are no longer needed and have been removed — the one `<base href>` replacement is now the sole source of the ingress path prefix.
+- Fixes incidental brittleness caused by byte-level `sub_filter` matches in minified JS bundles (e.g. the old `/stream/` rule inadvertently double-prefixed `api.get("/stream/config")`).
+- Update to latest version from Suncuss/BirdNET-PiPy (changelog: https://github.com/Suncuss/BirdNET-PiPy/releases)
+
 ## 0.5.5 (2026-03-02)
 - Update to latest version from Suncuss/BirdNET-PiPy (changelog : https://github.com/Suncuss/BirdNET-PiPy/releases)
 ## 0.5.4-3 (26-02-2026)
