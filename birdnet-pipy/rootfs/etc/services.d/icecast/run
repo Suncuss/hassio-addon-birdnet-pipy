@@ -7,9 +7,6 @@ export PULSE_SERVER="${PULSE_SERVER:-unix:/run/pulse/native}"
 # /app/data/logs is created as root by 01-structure.sh, but start-icecast.sh
 # runs via gosu icecast2 and would otherwise fail with "Permission denied"
 # on the first log write, taking icecast down before it can boot.
-# Only the dir itself and icecast's own log file are chowned — the backend
-# services (api, main) also write to this dir but run as root, which
-# bypasses directory ACL checks and is unaffected by the ownership change.
 mkdir -p /app/data/logs
 touch /app/data/logs/icecast.log
 # Use `icecast2:` (trailing colon) so chown picks the user's primary group,

@@ -72,7 +72,7 @@ name: BirdNET-PiPy
 options:
   env_vars: []
   ICECAST_PASSWORD: ''
-  TZ: Etc/UTC
+  TZ: Europe/Paris
   data_location: /config/data
 panel_icon: mdi:bird
 ports:
@@ -96,5 +96,5 @@ schema:
   ssl: bool?
 slug: birdnet-pipy
 url: https://github.com/Suncuss/hassio-addon-birdnet-pipy/tree/main/birdnet-pipy
-version: "0.6.2-dev0"
+version: "0.6.3"
 webui: "[PROTO:ssl]://[HOST]:[PORT:80]"

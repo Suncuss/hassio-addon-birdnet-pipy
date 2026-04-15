@@ -1,8 +1,36 @@
+## 0.6.3 (2026-04-13)
+- Simplify ingress nginx to a single `<base href>` rewrite. Upstream now declares `<base href="/">` in `index.html` with Vite `base: './'` and uses relative paths for all internal URLs (built assets, axios `baseURL`, socket.io `path`). The previous seven `sub_filter` rules (href/src/`/api`/`/socket.io`) are no longer needed — one `<base href>` replacement is sufficient.
+- Removes incidental brittleness from byte-level `sub_filter` matches in minified JS bundles (the old `/stream/` rule had inadvertently double-prefixed the literal `api.get("/stream/config")` string).
+- Update to latest version from Suncuss/BirdNET-PiPy (changelog : https://github.com/Suncuss/BirdNET-PiPy/releases)
 
-## 0.6.2-dev0 (2026-04-13)
-- Simplify ingress nginx to a single `<base href>` rewrite. The frontend now declares `<base href="/">` in `index.html` and uses relative paths for all internal URLs (built assets via Vite `base: './'`, axios via `BASE + 'api'`, socket.io via `path: BASE + 'socket.io'`). Previous seven `sub_filter` rules (href/src/`/api`/`/socket.io`) are no longer needed and have been removed — the one `<base href>` replacement is now the sole source of the ingress path prefix.
-- Fixes incidental brittleness caused by byte-level `sub_filter` matches in minified JS bundles (e.g. the old `/stream/` rule inadvertently double-prefixed `api.get("/stream/config")`).
-- Update to latest version from Suncuss/BirdNET-PiPy (changelog: https://github.com/Suncuss/BirdNET-PiPy/releases)
+## 0.6.2-2 (11-04-2026)
+- Minor bugs fixed
+
+## 0.6.2 (2026-04-11)
+- Update to latest version from Suncuss/BirdNET-PiPy (changelog : https://github.com/Suncuss/BirdNET-PiPy/releases)
+- Fix Icecast crashing on startup due to log directory permissions (502 Bad Gateway on Live Feed)
+- Fix Live Feed broken in ingress mode — stream config request was double-prefixed by sub_filter
+
+## 0.6.1 (2026-04-06)
+- Update to latest version from Suncuss/BirdNET-PiPy (changelog : https://github.com/Suncuss/BirdNET-PiPy/releases)
+
+## 0.6.0 (2026-04-04)
+- Update to latest version from Suncuss/BirdNET-PiPy (changelog : https://github.com/Suncuss/BirdNET-PiPy/releases)
+
+## 0.5.8 (2026-03-26)
+- Update to latest version from Suncuss/BirdNET-PiPy (changelog : https://github.com/Suncuss/BirdNET-PiPy/releases)
+
+## 0.5.7 (2026-03-14)
+- Update to latest version from Suncuss/BirdNET-PiPy (changelog : https://github.com/Suncuss/BirdNET-PiPy/releases)
+
+## 0.5.6-2 (2026-03-11)
+- Add container timezone management: TZ option now properly configures the container timezone (symlinks /etc/localtime, writes /etc/timezone, exports to s6 environment)
+- Change default timezone from Etc/UTC to Europe/Paris
+
+## 0.5.6 (2026-03-07)
+- Update to latest version from Suncuss/BirdNET-PiPy (changelog : https://github.com/Suncuss/BirdNET-PiPy/releases)
+## 0.5.5-2 (04-03-2026)
+- Minor bugs fixed
 
 ## 0.5.5 (2026-03-02)
 - Update to latest version from Suncuss/BirdNET-PiPy (changelog : https://github.com/Suncuss/BirdNET-PiPy/releases)
