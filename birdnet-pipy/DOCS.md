@@ -22,12 +22,6 @@ env_vars: # Optional: extra environment variables
     value: 320k # Icecast mp3 stream bitrate (default 320k)
 ```
 
-Recording source (PulseAudio vs RTSP) and RTSP URLs are configured in the BirdNET-PiPy Web UI under **Settings → Audio** after the add-on first starts — they are not add-on options.
-
-## Timezone
-
-Timezone is auto-derived from the station location (latitude/longitude) configured in the BirdNET-PiPy Web UI under **Settings → Location**. All application timestamps (dashboard, logs, database) use that timezone.
-
 ## Audio
 
-The add-on expects audio via PulseAudio (default) or an RTSP stream configured in the BirdNET-PiPy settings.
+The add-on expects audio via PulseAudio (default) or an RTSP stream. Pick the source in the BirdNET-PiPy Web UI under **Settings → Audio** after the add-on first starts.

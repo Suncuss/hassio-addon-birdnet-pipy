@@ -1,3 +1,6 @@
+## 0.6.4-dev2 (2026-04-14)
+- Tighten the docs: dropped the standalone `## Timezone` section and the "not add-on options" phrasing. Kept a single audio-source note pointing to **Settings → Audio** in the Web UI.
+
 ## 0.6.4-dev1 (2026-04-14)
 - Clean up the options YAML in DOCS.md and README.md. Removed `RECORDING_MODE` and `RTSP_URL` — these had been documented as addon options but were never wired: the app reads recording mode and RTSP URLs from `user_settings.json` (configured via the Web UI), not from env vars. Also dropped `http_stream` from the list of modes (only `pulseaudio` and `rtsp` remain in `backend/config/constants.py`). Moved `STREAM_BITRATE` under an `env_vars:` example since it's honored by `start-icecast.sh` but has never been a first-class option in `config.yaml`'s schema.
 
