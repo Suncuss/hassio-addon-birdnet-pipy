@@ -1,3 +1,7 @@
+## 0.6.4-dev0 (2026-04-14)
+- Remove the `TZ` add-on option. Application timezone is now auto-derived in the Web UI from the station location (latitude/longitude) via `timezonefinder`, so a separately-configured container `TZ` only ever created mismatch (addon-level `TZ` vs. UI-derived zone). All app-facing timestamps — dashboard, API responses, database, and the built-in log viewer — already honored the UI-derived zone regardless of `TZ`; the frontend log viewer also re-converts Icecast timestamps on read using the configured zone. Net effect of the removal: one fewer knob, and raw container logs (HA addon log pane) now display in UTC instead of the user's locale — an intentional trade for a single source of truth.
+- Delete `rootfs/etc/cont-init.d/02-timezone.sh` (no longer needed — nothing in the container reads `/etc/localtime` that the app surfaces).
+
 ## 0.6.3 (2026-04-13)
 - Simplify ingress nginx to a single `<base href>` rewrite. Upstream now declares `<base href="/">` in `index.html` with Vite `base: './'` and uses relative paths for all internal URLs (built assets, axios `baseURL`, socket.io `path`). The previous seven `sub_filter` rules (href/src/`/api`/`/socket.io`) are no longer needed — one `<base href>` replacement is sufficient.
 - Removes incidental brittleness from byte-level `sub_filter` matches in minified JS bundles (the old `/stream/` rule had inadvertently double-prefixed the literal `api.get("/stream/config")` string).

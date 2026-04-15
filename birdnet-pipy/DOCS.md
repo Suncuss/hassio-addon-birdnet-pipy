@@ -15,13 +15,16 @@
 ## Options
 
 ```yaml
-TZ: Europe/Paris # Timezone, see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
 ICECAST_PASSWORD: "" # Optional: set a persistent password for the audio stream
 STREAM_BITRATE: 320k # Bitrate for the mp3 stream
 RECORDING_MODE: rtsp # pulseaudio | http_stream | rtsp
 RTSP_URL: "" # Required if RECORDING_MODE is rtsp
 data_location: /config/data # Persistent data location for BirdNET-PiPy
 ```
+
+## Timezone
+
+Timezone is auto-derived from the station location (latitude/longitude) configured in the BirdNET-PiPy Web UI under **Settings → Location**. All application timestamps (dashboard, logs, database) use that timezone.
 
 ## Audio
 
