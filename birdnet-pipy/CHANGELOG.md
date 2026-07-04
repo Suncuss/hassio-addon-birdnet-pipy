@@ -1,3 +1,8 @@
+## 0.8.2-dev0 (2026-07-04)
+- Update to latest version from Suncuss/BirdNET-PiPy (changelog : https://github.com/Suncuss/BirdNET-PiPy/releases)
+- Fix nginx failing to start with `limit_req_zone "api_rl" already bound` (502 on every page). Upstream 0.8.2 added http-level rate-limit zones, and the ingress config was generated as a full copy of nginx.conf — duplicating those declarations in the shared http context. `ingress.conf` is now built from the `server` block only, so http-level directives stay declared once.
+- Comment out the new upstream Content-Security-Policy header in ingress mode, matching the existing X-* security-header handling (ingress runs inside Home Assistant's authenticated frame; direct access keeps the full CSP).
+
 ## 0.6.4 (2026-04-15)
 - Remove the `TZ` add-on option. Application timezone is now auto-derived in the Web UI from the station location (latitude/longitude) via `timezonefinder`, so a separately-configured container `TZ` only ever created mismatch (addon-level `TZ` vs. UI-derived zone). All app-facing timestamps — dashboard, API responses, database, and the built-in log viewer — already honored the UI-derived zone regardless of `TZ`; the frontend log viewer also re-converts Icecast timestamps on read using the configured zone. Net effect: raw container logs (HA addon log pane) now display in UTC instead of the user's locale — an intentional trade for a single source of truth.
 - Delete `rootfs/etc/cont-init.d/02-timezone.sh` (no longer needed — nothing in the container reads `/etc/localtime` that the app surfaces).
