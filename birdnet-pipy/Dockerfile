@@ -79,7 +79,7 @@ COPY ha_automodules.sh /ha_automodules.sh
 RUN chmod 744 /ha_automodules.sh && /ha_automodules.sh "$MODULES" && rm /ha_automodules.sh
 
 # Manual apps
-ENV PACKAGES="python3 python3-pip python3-venv build-essential ffmpeg sox libpulse0 icecast2 nginx jq curl gosu"
+ENV PACKAGES="python3 python3-pip python3-venv build-essential ffmpeg libpulse0 icecast2 nginx jq curl gosu"
 
 # Automatic apps & bashio
 COPY ha_autoapps.sh /ha_autoapps.sh
