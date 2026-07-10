@@ -99,6 +99,11 @@ RUN sed -i \
     -e "s/BIRDNET_HOST = 'model-server'/BIRDNET_HOST = '127.0.0.1'/" \
     /app/config/settings.py
 
+# The app demotes stdout to WARNING once its rotating file handler attaches,
+# because compose deployments read full detail from data/logs. Here s6 stdout
+# is the add-on Log tab, so it has to stay verbose.
+ENV CONSOLE_LOG_LEVEL=INFO
+
 COPY --from=frontend-builder /src/deployment/audio/scripts/start-icecast.sh /usr/local/bin/start-icecast.sh
 RUN chown icecast2 /usr/local/bin/start-icecast.sh && chmod 755 /usr/local/bin/start-icecast.sh
 
