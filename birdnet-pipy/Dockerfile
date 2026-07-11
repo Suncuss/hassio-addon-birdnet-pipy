@@ -99,9 +99,10 @@ RUN sed -i \
     -e "s/BIRDNET_HOST = 'model-server'/BIRDNET_HOST = '127.0.0.1'/" \
     /app/config/settings.py
 
-# The app demotes stdout to WARNING once its rotating file handler attaches,
-# because compose deployments read full detail from data/logs. Here s6 stdout
-# is the add-on Log tab, so it has to stay verbose.
+# s6 stdout is the add-on Log tab — the log HA users actually read. Upstream
+# keeps stdout verbose by default and lets deployments whose users read
+# data/logs instead demote it via this env var (compose sets WARNING). Pin
+# INFO explicitly so the Log tab stays verbose even if that default changes.
 ENV CONSOLE_LOG_LEVEL=INFO
 
 COPY --from=frontend-builder /src/deployment/audio/scripts/start-icecast.sh /usr/local/bin/start-icecast.sh
