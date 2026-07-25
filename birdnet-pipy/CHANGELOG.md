@@ -1,3 +1,6 @@
+## 0.8.5-dev1 (2026-07-25)
+- Test build tracking the `ha` branch: identity-based restart/update detection (the page waits for the server to prove it came back — new process or version — instead of reloading on first reachability; HA updates use the same engine), split-species name grouping (taxonomy genus splits merge into one record), plus the upstream API modularization and database overhaul (species rollup table, versioned migrations, weekly integrity checks/backups — first boot runs a schema migration). Changelog : https://github.com/Suncuss/BirdNET-PiPy/releases
+
 ## 0.8.5-dev0 (2026-07-12)
 - Test build tracking the `ha` branch: bundled BirdNET V3.1 model (72 MB pruned FP16, no first-use download), BirdNET+ Geomodel v3.0.3, and hardened model startup/health reporting. Changelog : https://github.com/Suncuss/BirdNET-PiPy/releases
 
