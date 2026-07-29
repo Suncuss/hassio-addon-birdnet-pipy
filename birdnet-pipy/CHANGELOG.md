@@ -1,3 +1,6 @@
+## 0.8.5-dev2 (2026-07-28)
+- Test build tracking the `ha` branch: catches up to the upstream 0.8.5 release version, plus bird → species wording in the Observation Summary and Activity Overview headings (the `/api/observations/summary` and `/api/dashboard` fields were renamed to match — breaking for anything reading them directly), night-variant weather icons for detections recorded after sunset, species photos that crop to the detail page's real image shape instead of a square, and a distribution chart that fills its card. Changelog : https://github.com/Suncuss/BirdNET-PiPy/releases
+
 ## 0.8.5-dev1 (2026-07-25)
 - Test build tracking the `ha` branch: identity-based restart/update detection (the page waits for the server to prove it came back — new process or version — instead of reloading on first reachability; HA updates use the same engine), split-species name grouping (taxonomy genus splits merge into one record), plus the upstream API modularization and database overhaul (species rollup table, versioned migrations, weekly integrity checks/backups — first boot runs a schema migration). Changelog : https://github.com/Suncuss/BirdNET-PiPy/releases
 
