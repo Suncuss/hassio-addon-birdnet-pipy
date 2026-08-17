@@ -1,3 +1,6 @@
+## 0.8.7-dev0 (2026-08-16)
+- Test build tracking the `ha` branch: catches up to the upstream 0.8.7 release — per-detection media ownership with atomic file publication (first boot runs a schema migration, then resolves existing history in the background), dashboard summary/trends served from new daily rollup tables (all-time summary ~10s -> ~26ms on a 1.1M-detection database), redesigned storage cleanup with exact accounting plus optional keep-last-N-days / size-budget policies (off by default), and bird-details Best/Recent recordings that rank only clips still on disk. Changelog : https://github.com/Suncuss/BirdNET-PiPy/releases
+
 ## 0.8.5-dev2 (2026-07-28)
 - Test build tracking the `ha` branch: catches up to the upstream 0.8.5 release version, plus bird → species wording in the Observation Summary and Activity Overview headings (the `/api/observations/summary` and `/api/dashboard` fields were renamed to match — breaking for anything reading them directly), night-variant weather icons for detections recorded after sunset, species photos that crop to the detail page's real image shape instead of a square, and a distribution chart that fills its card. Changelog : https://github.com/Suncuss/BirdNET-PiPy/releases
 
