@@ -1,3 +1,6 @@
+## 0.8.7-dev1 (2026-08-18)
+- Test build tracking the `ha` branch: gapless audio capture — each source records through one persistent ffmpeg stream (auto-restarted on failure) instead of a new process per segment, eliminating the dead air between recordings that cost slower devices ~25-30% of all audio; segment timestamps stay contiguous with in-place re-anchoring on DST/NTP clock steps, and an explicit backlog-shedding policy protects devices where analysis is slower than capture. Changelog : https://github.com/Suncuss/BirdNET-PiPy/releases
+
 ## 0.8.7-dev0 (2026-08-16)
 - Test build tracking the `ha` branch: catches up to the upstream 0.8.7 release — per-detection media ownership with atomic file publication (first boot runs a schema migration, then resolves existing history in the background), dashboard summary/trends served from new daily rollup tables (all-time summary ~10s -> ~26ms on a 1.1M-detection database), redesigned storage cleanup with exact accounting plus optional keep-last-N-days / size-budget policies (off by default), and bird-details Best/Recent recordings that rank only clips still on disk. Changelog : https://github.com/Suncuss/BirdNET-PiPy/releases
 
