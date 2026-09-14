@@ -105,8 +105,12 @@ RUN sed -i \
 # INFO explicitly so the Log tab stays verbose even if that default changes.
 ENV CONSOLE_LOG_LEVEL=INFO
 
+# Icecast startup runs as root (see rootfs/etc/services.d/icecast/run): the
+# script hands Icecast to icecast2 via <changeowner>, and the Python stream
+# supervisor it execs keeps root to read the API's root-owned settings.
 COPY --from=frontend-builder /src/deployment/audio/scripts/start-icecast.sh /usr/local/bin/start-icecast.sh
-RUN chown icecast2 /usr/local/bin/start-icecast.sh && chmod 755 /usr/local/bin/start-icecast.sh
+COPY --from=frontend-builder /src/deployment/audio/scripts/stream_supervisor.py /app/stream_supervisor.py
+RUN chmod 755 /usr/local/bin/start-icecast.sh
 
 COPY --from=frontend-builder /src/frontend/dist /usr/share/nginx/html
 

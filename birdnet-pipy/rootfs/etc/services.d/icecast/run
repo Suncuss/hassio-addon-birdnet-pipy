@@ -3,14 +3,10 @@
 set -euo pipefail
 export PULSE_SERVER="${PULSE_SERVER:-unix:/run/pulse/native}"
 
-# Ensure the log directory and file are writable by the icecast2 user.
-# /app/data/logs is created as root by 01-structure.sh, but start-icecast.sh
-# runs via gosu icecast2 and would otherwise fail with "Permission denied"
-# on the first log write, taking icecast down before it can boot.
+# Runs as root on purpose. start-icecast.sh hands the Icecast daemon to the
+# icecast2 account itself (<changeowner>), then execs the Python stream
+# supervisor as root: the API service also runs as root and writes
+# user_settings.json with mode 0600 into the root-owned data directory, which
+# the supervisor must read, and it writes streaming_status.json beside it.
 mkdir -p /app/data/logs
-touch /app/data/logs/icecast.log
-# Use `icecast2:` (trailing colon) so chown picks the user's primary group,
-# which is `icecast` on Debian, not `icecast2`.
-chown icecast2: /app/data/logs /app/data/logs/icecast.log
-
-gosu icecast2 /usr/local/bin/start-icecast.sh
+exec /usr/local/bin/start-icecast.sh
