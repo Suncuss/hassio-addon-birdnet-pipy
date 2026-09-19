@@ -1,3 +1,6 @@
+## 0.8.9-dev4 (2026-09-19)
+- Packaging only: the icecast service now copies the upstream audio scripts directory and picks root (supervisor present) or `gosu icecast2` (0.8.8-style script) at start, the exact shape proposed to the public add-on so it can merge before or after the upstream release. Changelog : https://github.com/Suncuss/BirdNET-PiPy/releases
+
 ## 0.8.9-dev3 (2026-09-19)
 - Test build tracking the `ha` branch: live streaming for stations whose settings file still uses the pre-multi-source audio format, and the Table/Charts species dropdown reopening after a pick. Changelog : https://github.com/Suncuss/BirdNET-PiPy/releases
 
