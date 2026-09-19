@@ -1,3 +1,6 @@
+## 0.8.9-dev3 (2026-09-19)
+- Test build tracking the `ha` branch: live streaming for stations whose settings file still uses the pre-multi-source audio format, and the Table/Charts species dropdown reopening after a pick. Changelog : https://github.com/Suncuss/BirdNET-PiPy/releases
+
 ## 0.8.9-dev2 (2026-09-14)
 - Test build tracking the `ha` branch: ships the new per-source stream supervisor (`stream_supervisor.py`), which 0.8.9-dev0/dev1 started but never copied, so the icecast service restart-looped with no live stream and "Live stream: Status unavailable". The icecast service now runs as root and Icecast drops to `icecast2` itself, so the supervisor can read the root-owned settings file. Changelog : https://github.com/Suncuss/BirdNET-PiPy/releases
 
