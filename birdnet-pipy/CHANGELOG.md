@@ -1,3 +1,6 @@
+## 0.8.11-dev1 (2026-09-27)
+- Test build tracking the `ha` branch (upstream 0.8.10 + unreleased dev): sign-ins on password-protected stations each get their own ID, so signing out ends only that browser's session (browsers signed in before this build sign in once more); the BirdNET V3.1 model now applies the same human-voice privacy filter as V2.4; recordings that won't play on the Dashboard or Table say why; deleting more than 100 selected detections works; CSV export keeps the ready file on "New export" and leaves the disk's last 5% free. Removes unused API endpoints (`/api/observations/latest`, `/recent`, `/summary`, the `wikimedia_choice` GET, and the `average_confidence`/`seasonality` fields of `/api/bird/<name>`), which breaks any Home Assistant REST sensor reading them. Python dependencies are now pinned exactly. Changelog : https://github.com/Suncuss/BirdNET-PiPy/releases
+
 ## 0.8.11-dev0 (2026-09-25)
 - Test build tracking the `ha` branch (upstream 0.8.10 + unreleased dev): the CSV export now opens a time-range window, prepares a zipped file as a background job with a live progress bar, then offers it as a download; much faster export, storage cleanup and post-import media indexing on large databases; Gallery photos load four at a time; faster reload after an update or restart. Changelog : https://github.com/Suncuss/BirdNET-PiPy/releases
 
